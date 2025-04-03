@@ -1,6 +1,9 @@
-cars-service-rest:
-  host: vpic.nhtsa.dot.gov
-  protocol: https
-  base-path: /api/vehicles
+user-service-rest:
+  host: localhost
+  port: 8080
+  protocol: http
+  base-path: /api/users
+  username: username
+  password: password
 log:
   rest-assured-responses: false

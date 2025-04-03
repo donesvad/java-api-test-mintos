@@ -16,7 +16,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <rest-assured.version>5.5.0</rest-assured.version>
@@ -28,7 +28,7 @@
     <protobuf-util.version>4.27.3</protobuf-util.version>
     <allure.version>2.29.0</allure.version>
     <aspectj.version>1.9.21</aspectj.version>
-    <wiremock.version>3.9.1</wiremock.version>
+    <javafaker.version>1.0.2</javafaker.version>
   </properties>
 
   <dependencyManagement>
@@ -98,14 +98,6 @@
       <version>${jwt-java.version}</version>
     </dependency>
 
-    <!-- Mock -->
-    <dependency>
-      <groupId>org.wiremock</groupId>
-      <artifactId>wiremock-jetty12</artifactId>
-      <version>${wiremock.version}</version>
-      <scope>test</scope>
-    </dependency>
-
     <!--Code generation-->
     <dependency>
       <groupId>org.projectlombok</groupId>
@@ -129,6 +121,14 @@
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-rest-assured</artifactId>
     </dependency>
+
+    <!--Test data-->
+    <dependency>
+      <groupId>com.github.javafaker</groupId>
+      <artifactId>javafaker</artifactId>
+      <version>${javafaker.version}</version>
+    </dependency>
+
   </dependencies>
 
   <build>

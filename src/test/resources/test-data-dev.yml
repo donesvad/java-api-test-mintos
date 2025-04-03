@@ -1,9 +1,30 @@
-car:
-  make:
-    id: 10005
-    name: 357 GOLF CARTS
-  manufacturer:
-    id: 955
-    name: TESLA, INC.
-    common-name: Tesla
-    country: UNITED STATES (USA)
+user:
+  list:
+    - id: 1
+      firstName: John
+      lastName: Doe
+      email: john.doe@email.com
+      dateOfBirth: '1990-01-01'
+      personalIdDocument:
+        documentId: 1
+        countryOfIssue: MD
+        validUntil: '2030-01-01'
+    - id: 2
+      firstName: Alice
+      lastName: Smith
+      dateOfBirth: '1985-07-15'
+      personalIdDocument:
+        documentId: 2
+        countryOfIssue: US
+        validUntil: '2032-07-15'
+
+    - id: 3
+      firstName: Carlos
+      lastName: Garcia
+      email: carlos.garcia@email.com
+      dateOfBirth: '1995-05-22'
+      personalIdDocument:
+        documentId: 3
+        countryOfIssue: ES
+        validUntil: '2029-05-22'
+

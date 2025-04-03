@@ -1,8 +1,10 @@
 package com.donesvad.scenario;
 
-import com.donesvad.action.CarsAction;
+import com.donesvad.action.UserAction;
+import com.donesvad.assertion.UserAssertion;
 import com.donesvad.configuration.SpringConfiguration;
-import com.donesvad.mock.CarsMock;
+import com.donesvad.configuration.testdata.UserProperties;
+import com.donesvad.rest.dto.User;
 import com.donesvad.util.TestContext;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
@@ -23,28 +25,36 @@ import org.springframework.core.env.Environment;
 @SpringBootTest(classes = SpringConfiguration.class)
 public abstract class BaseTest {
 
-  @Autowired protected CarsAction carsAction;
-  @Autowired protected CarsMock carsMock;
-  @Autowired protected TestContext testContext;
+    @Autowired protected TestContext testContext;
+    @Autowired protected UserAction userAction;
+    @Autowired protected UserAssertion userAssertion;
+    @Autowired protected UserProperties userProperties;
 
-  @BeforeAll
-  public static void setup(@Autowired Environment env) {
-    RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-    List<Filter> filters = new LinkedList<>();
-    filters.add(new AllureRestAssured());
-    if (Boolean.parseBoolean(env.getProperty("log.rest-assured-responses", "false"))) {
-      filters.add(new ResponseLoggingFilter());
+    @BeforeAll
+    public static void setup(@Autowired Environment env) {
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+        List<Filter> filters = new LinkedList<>();
+        filters.add(new AllureRestAssured());
+        if (Boolean.parseBoolean(env.getProperty("log.rest-assured-responses", "false"))) {
+            filters.add(new ResponseLoggingFilter());
+        }
+        RestAssured.filters(filters);
+        RestAssured.useRelaxedHTTPSValidation();
     }
-    RestAssured.filters(filters);
-    RestAssured.useRelaxedHTTPSValidation();
-  }
 
-  @AfterAll
-  public static void tearDown() {}
+    @AfterAll
+    public static void tearDown() {}
 
-  @BeforeEach
-  public void init() {}
+    @BeforeEach
+    public void init() {
+        List<User> userTestData = getUserTestData();
+        userTestData.forEach((e) -> userAction.deleteAnyUser(e.getId()));
+    }
 
-  @AfterEach
-  public void cleanUp() {}
+    @AfterEach
+    public void cleanUp() {}
+
+    protected List<User> getUserTestData() {
+        return userProperties.getList();
+    }
 }

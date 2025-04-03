@@ -1,8 +1,10 @@
-# Java API E2E Test Framework
+# Java API Test Framework
+
+## **Disclaimer:** This repository is a mirror of an original open-source template repository, primarily adjusted to fit the provided API specification. You can find the original repository here: [donesvad/java-api-test](https://github.com/donesvad/java-api-test). Additionally, for UI test automation examples using Cucumber, please refer to: [donesvad/java-ui-test-github](https://github.com/donesvad/java-ui-test-github).
 
 ## Overview
 
-This project is an end-to-end (E2E) test framework for API testing using Java. The framework leverages several powerful libraries and tools to provide
+This project is an automation test framework for API testing using Java. The framework leverages several powerful libraries and tools to provide
 comprehensive testing capabilities for RESTful APIs and gRPC services.
 
 ## Key Features
@@ -97,7 +99,7 @@ You can customize log levels for specific packages or classes by modifying the `
 
 ### Continuous Integration (CI) Pipeline
 
-This project uses GitHub Actions for Continuous Integration (CI) to automatically run end-to-end (E2E) API tests on each push or pull request to the `main`
+This project uses GitHub Actions for Continuous Integration (CI) to automatically run automation API tests on each push or pull request to the `main`
 branch. The CI pipeline is defined in the `.github/workflows/maven-test.yml` file and consists of the following steps:
 
 1. Triggering the Workflow:
@@ -109,7 +111,8 @@ branch. The CI pipeline is defined in the `.github/workflows/maven-test.yml` fil
     - The project is first built using Maven with the command mvn clean install -DskipTests. This command compiles the project and skips the tests to quickly
       validate the build.
 4. Running the Tests:
-    - After the build, the E2E API tests are executed using the mvn test command. This step ensures that all tests are run and their results are generated.
+    - After the build, the automation API tests are executed using the mvn test command. This step ensures that all tests are run and their results are
+      generated.
 5. Generating and Publishing the Allure Test Report:
     - The CI pipeline loads the test report history from the gh-pages branch.
     - The Allure report is generated using the `simple-elf/allure-report-action@v1.9` action.
@@ -119,17 +122,6 @@ branch. The CI pipeline is defined in the `.github/workflows/maven-test.yml` fil
       link: [View Allure Report Results](https://donesvad.github.io/java-api-test/)
 
 This CI pipeline ensures that all changes to the main branch are thoroughly tested and that test results are easily accessible through the Allure report.
-
-### WireMock
-
-WireMock is integrated into the project to mock external API dependencies, enabling more controlled and predictable testing environments. This is particularly
-useful for scenarios where the external service is unreliable, expensive to use, or simply unavailable during testing.
-
-WireMock allows you to:
-
-- Define stubs for external service endpoints, returning pre-defined responses for various HTTP methods.
-- Simulate different response statuses and delays to test how your application handles various scenarios.
-- Ensure that your tests are fast, reliable, and do not depend on external network conditions.
 
 ### Test Parallelization
 
@@ -190,6 +182,6 @@ framework supports automatic retries of failing tests using the `rerunFailingTes
 
 ### Docker Support
 
-To simplify the setup process and ensure a consistent environment across different machines, this project supports running the E2E API test framework inside a
+To simplify the setup process and ensure a consistent environment across different machines, this project supports running the API test framework inside a
 Docker container. Docker allows you to package the framework along with all its dependencies, making it easier to run tests without worrying about local
 environment configurations.

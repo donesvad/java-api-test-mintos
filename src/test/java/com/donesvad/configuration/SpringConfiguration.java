@@ -3,6 +3,7 @@ package com.donesvad.configuration;
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_ENUMS_USING_TO_STRING;
 
+import com.donesvad.configuration.testdata.UserProperties;
 import com.donesvad.util.YamlPropertySourceFactory;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -11,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 @Configuration
 @ComponentScan(basePackages = {"com.donesvad"})
+@EnableConfigurationProperties({UserProperties.class})
 @PropertySource(
     value = {
       "classpath:application-${environment:dev}.yml",
