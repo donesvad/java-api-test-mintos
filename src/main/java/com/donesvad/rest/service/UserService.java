@@ -62,9 +62,10 @@ public class UserService {
                     .paramConfig(
                         ParamConfig.paramConfig()
                             .queryParamsUpdateStrategy(UpdateStrategy.REPLACE)))
-//            .addHeader(
-//                "Authorization",
-//                given().auth().basic(username, password).get("").header("Authorization"))
+            //            .addHeader(
+            //                "Authorization",
+            //                given().auth().basic(username,
+            // password).get("").header("Authorization"))
             .build();
   }
 

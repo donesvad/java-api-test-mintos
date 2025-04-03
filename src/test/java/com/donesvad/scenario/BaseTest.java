@@ -25,36 +25,36 @@ import org.springframework.core.env.Environment;
 @SpringBootTest(classes = SpringConfiguration.class)
 public abstract class BaseTest {
 
-    @Autowired protected TestContext testContext;
-    @Autowired protected UserAction userAction;
-    @Autowired protected UserAssertion userAssertion;
-    @Autowired protected UserProperties userProperties;
+  @Autowired protected TestContext testContext;
+  @Autowired protected UserAction userAction;
+  @Autowired protected UserAssertion userAssertion;
+  @Autowired protected UserProperties userProperties;
 
-    @BeforeAll
-    public static void setup(@Autowired Environment env) {
-        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-        List<Filter> filters = new LinkedList<>();
-        filters.add(new AllureRestAssured());
-        if (Boolean.parseBoolean(env.getProperty("log.rest-assured-responses", "false"))) {
-            filters.add(new ResponseLoggingFilter());
-        }
-        RestAssured.filters(filters);
-        RestAssured.useRelaxedHTTPSValidation();
+  @BeforeAll
+  public static void setup(@Autowired Environment env) {
+    RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
+    List<Filter> filters = new LinkedList<>();
+    filters.add(new AllureRestAssured());
+    if (Boolean.parseBoolean(env.getProperty("log.rest-assured-responses", "false"))) {
+      filters.add(new ResponseLoggingFilter());
     }
+    RestAssured.filters(filters);
+    RestAssured.useRelaxedHTTPSValidation();
+  }
 
-    @AfterAll
-    public static void tearDown() {}
+  @AfterAll
+  public static void tearDown() {}
 
-    @BeforeEach
-    public void init() {
-        List<User> userTestData = getUserTestData();
-        userTestData.forEach((e) -> userAction.deleteAnyUser(e.getId()));
-    }
+  @BeforeEach
+  public void init() {
+    List<User> userTestData = getUserTestData();
+    userTestData.forEach((e) -> userAction.deleteAnyUser(e.getId()));
+  }
 
-    @AfterEach
-    public void cleanUp() {}
+  @AfterEach
+  public void cleanUp() {}
 
-    protected List<User> getUserTestData() {
-        return userProperties.getList();
-    }
+  protected List<User> getUserTestData() {
+    return userProperties.getList();
+  }
 }
