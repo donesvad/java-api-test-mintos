@@ -18,8 +18,6 @@ comprehensive testing capabilities for RESTful APIs and gRPC services.
 - **Allure Reporting**: Integrates with Allure for generating detailed test reports.
 - **GitHub Actions for CI**: Implements Continuous Integration (CI) using GitHub Actions to automatically build, test, and publish test reports. The CI workflow
   triggers on push, pull request, or manually, ensuring that the code is always in a deployable state.
-- **WireMock for Mocking**: Utilizes WireMock for mocking external HTTP dependencies, allowing for isolated and repeatable tests by simulating the behavior of
-  an external API without relying on its availability.
 - **Test Parallelization**: Supports both thread-based and fork-based parallelization strategies to speed up test execution.
 - **Automatic Retry of Failing Tests**: Automatically retries failing tests to handle flaky tests or transient failures.
 - **Docker Support**: Provides Docker support for running tests in a containerized environment, ensuring consistent test execution across different machines.
