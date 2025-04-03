@@ -1,10 +1,6 @@
 # Java API Test Framework
 
-## **Disclaimer:
-
-** This repository is a mirror of an original open-source template repository, primarily adjusted to fit the provided API specification. You can find the
-original repository here: [donesvad/java-api-test](https://github.com/donesvad/java-api-test). Additionally, for UI test automation examples using Cucumber,
-please refer to: [donesvad/java-ui-test-github](https://github.com/donesvad/java-ui-test-github).
+## **Disclaimer:** This repository is a mirror of an original open-source template repository, primarily adjusted to fit the provided API specification. You can find the original repository here: [donesvad/java-api-test](https://github.com/donesvad/java-api-test). Additionally, for UI test automation examples using Cucumber, please refer to: [donesvad/java-ui-test-github](https://github.com/donesvad/java-ui-test-github).
 
 ## Overview
 
